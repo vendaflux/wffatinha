@@ -2,13 +2,10 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'unsafe-inline'; img-src data: https://raw.githubusercontent.com; connect-src https://fonts.googleapis.com https://fonts.gstatic.com;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; script-src 'unsafe-inline'; img-src data: https://raw.githubusercontent.com;">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Copa 2026 na Fatinha · WF Fatinha Conveniência — Reserve sua mesa</title>
 <meta name="description" content="Reserve sua mesa na WF Fatinha Conveniência para os jogos do Brasil. Litrinhos trincando, espetinhos na brasa e a galera da Zona Sul unida.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
    COPA 2026 · WF Fatinha Conveniência — Bar da Fatinha
@@ -35,7 +32,7 @@ html{scroll-behavior:smooth}
 body{
   background:var(--noite);
   color:var(--espuma);
-  font-family:'DM Sans',system-ui,sans-serif;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
   font-size:16px;line-height:1.55;
   -webkit-font-smoothing:antialiased;
   background-image:radial-gradient(ellipse 90% 50% at 50% -5%, rgba(245,166,35,.06), transparent 60%);
@@ -45,7 +42,7 @@ body{
 main{position:relative;z-index:1;max-width:var(--max);margin:0 auto;padding:0 20px 140px}
 
 /* ---------- tipografia ---------- */
-h1,h2,.display{font-family:'Fraunces',serif;font-weight:600;line-height:1.12;letter-spacing:-.01em}
+h1,h2,.display{font-family:Georgia,'Palatino Linotype',Palatino,serif;font-weight:600;line-height:1.12;letter-spacing:-.01em}
 .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--cerveja)}
 .muted{color:var(--espuma-suave)}
 
@@ -64,14 +61,14 @@ h1,h2,.display{font-family:'Fraunces',serif;font-weight:600;line-height:1.12;let
   background:linear-gradient(180deg,var(--balcao-2),var(--balcao));overflow:hidden}
 .placar .topo{display:flex;justify-content:space-between;align-items:center;gap:8px;
   padding:12px 18px;border-bottom:1px solid var(--linha)}
-.placar .jogo{font-family:'Fraunces',serif;font-weight:700;font-size:1.15rem;letter-spacing:.04em}
+.placar .jogo{font-family:Georgia,'Palatino Linotype',Palatino,serif;font-weight:700;font-size:1.15rem;letter-spacing:.04em}
 .placar .jogo .x{color:var(--cerveja);font-style:italic;font-weight:400;padding:0 6px}
 .placar .quando{font-size:.8rem;color:var(--espuma-suave);text-align:right}
 .placar .corpo{padding:16px 18px 18px;border-top:3px solid var(--verde-escuro)}
 .placar .rotulo{font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--espuma-suave);margin-bottom:8px}
 .contagem{display:flex;gap:14px;font-variant-numeric:tabular-nums}
 .contagem .seg{text-align:center;min-width:54px}
-.contagem .num{font-size:1.9rem;font-weight:700;color:var(--cerveja-forte);font-family:'DM Sans',sans-serif;letter-spacing:.02em;line-height:1}
+.contagem .num{font-size:1.9rem;font-weight:700;color:var(--cerveja-forte);font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;letter-spacing:.02em;line-height:1}
 .contagem .uni{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--espuma-suave);margin-top:5px}
 .placar .aviso{margin-top:12px;font-size:.85rem;color:var(--espuma-suave)}
 .placar .aviso strong{color:var(--espuma)}
@@ -95,7 +92,7 @@ section .desc-sec{font-size:.95rem;color:var(--espuma-suave);margin-bottom:20px}
 /* ---------- agenda dos jogos ---------- */
 .agenda{display:flex;flex-direction:column;gap:10px;margin-bottom:8px}
 .partida{display:flex;align-items:center;gap:14px;border:1px solid var(--linha);border-radius:12px;padding:13px 16px;background:rgba(255,255,255,.02)}
-.partida .data{font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;min-width:64px;color:var(--cerveja)}
+.partida .data{font-family:Georgia,'Palatino Linotype',Palatino,serif;font-weight:700;font-size:1.05rem;min-width:64px;color:var(--cerveja)}
 .partida .info{flex:1}
 .partida .info .times{font-weight:700;font-size:.95rem}
 .partida .info .ret{font-size:.8rem;color:var(--espuma-suave)}
@@ -109,7 +106,7 @@ section .desc-sec{font-size:.95rem;color:var(--espuma-suave);margin-bottom:20px}
 .kit{border:1px solid var(--linha);border-radius:var(--radius);background:var(--balcao);padding:20px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s}
 .kit:hover{border-color:rgba(245,166,35,.4)}
 .kit .cab{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
-.kit h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.25rem}
+.kit h3{font-family:Georgia,'Palatino Linotype',Palatino,serif;font-weight:600;font-size:1.25rem}
 .kit .preco{font-weight:700;color:var(--cerveja-forte);font-size:1.1rem;white-space:nowrap;font-variant-numeric:tabular-nums}
 .kit .serve{align-self:flex-start;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#7FD6A4;border:1px solid var(--verde);border-radius:999px;padding:4px 10px}
 .kit .desc{font-size:.9rem;color:var(--espuma-suave);flex:1}
@@ -127,7 +124,7 @@ section .desc-sec{font-size:.95rem;color:var(--espuma-suave);margin-bottom:20px}
 .barra .resumo{flex:1;line-height:1.3}
 .barra .resumo .itens{font-size:.78rem;color:var(--espuma-suave)}
 .barra .resumo .total{font-weight:700;font-size:1rem;color:var(--cerveja-forte)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--cerveja);color:#1A0F00;font-weight:700;font-size:.95rem;border:none;border-radius:12px;padding:14px 22px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .15s,transform .1s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--cerveja);color:#1A0F00;font-weight:700;font-size:.95rem;border:none;border-radius:12px;padding:14px 22px;cursor:pointer;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;transition:background .15s,transform .1s}
 .btn:hover{background:var(--cerveja-forte)}
 .btn:active{transform:scale(.98)}
 .btn-zap{background:#25D366;color:#06281A;width:100%}
@@ -139,7 +136,7 @@ dialog{border:none;border-radius:18px 18px 0 0;background:var(--balcao-2);color:
 dialog::backdrop{background:rgba(5,8,4,.75);backdrop-filter:blur(3px)}
 .dlg-inner{padding:24px 22px calc(24px + env(safe-area-inset-bottom));overflow-y:auto;max-height:88dvh}
 .dlg-cab{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-.dlg-cab h3{font-family:'Fraunces',serif;font-size:1.4rem}
+.dlg-cab h3{font-family:Georgia,'Palatino Linotype',Palatino,serif;font-size:1.4rem}
 .fechar-x{background:none;border:1px solid var(--linha);color:var(--espuma-suave);width:36px;height:36px;border-radius:50%;font-size:1rem;cursor:pointer}
 .resumo-pedido{border:1px solid var(--linha);border-radius:12px;padding:14px 16px;margin-bottom:18px;background:rgba(0,0,0,.18)}
 .resumo-pedido .ln{display:flex;justify-content:space-between;gap:12px;font-size:.9rem;padding:3px 0}
@@ -156,12 +153,12 @@ dialog::backdrop{background:rgba(5,8,4,.75);backdrop-filter:blur(3px)}
 /* ---------- confirmação ---------- */
 .confirma{text-align:center;padding:8px 0}
 .confirma .check{width:54px;height:54px;border-radius:50%;background:rgba(46,139,87,.18);border:1px solid var(--verde);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 14px}
-.confirma h3{font-family:'Fraunces',serif;font-size:1.35rem;margin-bottom:8px}
+.confirma h3{font-family:Georgia,'Palatino Linotype',Palatino,serif;font-size:1.35rem;margin-bottom:8px}
 .confirma p{font-size:.92rem;color:var(--espuma-suave);max-width:38ch;margin:0 auto 6px}
 
 /* ---------- footer ---------- */
 footer{border-top:1px solid var(--linha);margin-top:54px;padding:26px 0 10px;text-align:center}
-footer .marca{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem}
+footer .marca{font-family:Georgia,'Palatino Linotype',Palatino,serif;font-weight:600;font-size:1.05rem}
 footer p{font-size:.82rem;color:var(--espuma-suave);margin-top:4px}
 footer .credito{margin-top:18px;font-size:.74rem;letter-spacing:.04em}
 footer .credito a{color:var(--cerveja);text-decoration:none;font-weight:700}
