@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; style-src-elem 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'unsafe-inline'; img-src data:; connect-src https://fonts.googleapis.com https://fonts.gstatic.com;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'unsafe-inline'; img-src data: https://raw.githubusercontent.com; connect-src https://fonts.googleapis.com https://fonts.gstatic.com;">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Copa 2026 na Fatinha · WF Fatinha Conveniência — Reserve sua mesa</title>
 <meta name="description" content="Reserve sua mesa na WF Fatinha Conveniência para os jogos do Brasil. Litrinhos trincando, espetinhos na brasa e a galera da Zona Sul unida.">
@@ -50,12 +50,14 @@ h1,h2,.display{font-family:'Fraunces',serif;font-weight:600;line-height:1.12;let
 .muted{color:var(--espuma-suave)}
 
 /* ---------- hero ---------- */
-.hero{padding:52px 0 28px;text-align:left}
+.hero{padding:40px 0 28px;text-align:left}
 .hero .eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--verde);box-shadow:0 0 0 3px rgba(46,139,87,.2)}
 .hero h1{font-size:clamp(2.3rem,8vw,3.3rem);margin-bottom:6px}
 .hero h1 .fino{font-weight:400;font-style:italic;color:var(--cerveja)}
 .hero .sub{font-size:1.05rem;color:var(--espuma-suave);max-width:46ch;margin-top:10px}
+.logo-hero{display:block;height:clamp(52px,14vw,80px);width:auto;object-fit:contain;margin-bottom:22px}
+#h-marca{font-size:clamp(1.6rem,5vw,2.4rem)}
 
 /* ---------- placar de reservas ---------- */
 .placar{margin:30px 0 8px;border:1px solid var(--linha);border-radius:var(--radius);
@@ -181,6 +183,7 @@ footer .credito a{color:var(--cerveja);text-decoration:none;font-weight:700}
 
   <!-- ================= HERO ================= -->
   <header class="hero">
+    <img src="https://raw.githubusercontent.com/vendaflux/wffatinha/refs/heads/main/logo-wf.png" alt="WF Fatinha Conveniência" class="logo-hero">
     <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Copa 2026 · Zona Sul de Londrina</p>
     <h1 id="h-marca">WF Fatinha Conveniência</h1>
     <h1 style="font-size:clamp(1.5rem,5.5vw,2.1rem)"><span class="fino">Bar da Fatinha — Reserve sua mesa</span></h1>
@@ -266,13 +269,13 @@ const CONFIG = {
     nome: "WF Fatinha Conveniência",
     apelido: "Bar da Fatinha",
     cidade: "Zona Sul · Londrina · PR",
-    horario: "Seg a Dom, das 09h às 00h",
+    horario: "Qua a Dom, das 09h às 23h",
   },
   // WhatsApp da Fatinha — 55 + DDD + número, só dígitos
   whatsapp: "5543984366762",
   credito: {
     nome: "Walter Miranda · Com Propósito",
-    url: "https://wa.me/5543988616329", // ⚠️ AJUSTAR: WhatsApp do desenvolvedor
+    url: "https://wa.me/5543984366762", // ⚠️ AJUSTAR: WhatsApp do desenvolvedor
   },
   // Jogos do Brasil na fase de grupos — Copa 2026 (horário de Brasília)
   // limite = até quando aceitar reserva (antes do bar abrir pra aquele jogo)
