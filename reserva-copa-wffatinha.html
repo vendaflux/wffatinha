@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copa 2026 na Fatinha · WF Petiscaria — Reserve sua mesa</title>
+<meta name="description" content="Reserve sua mesa na WF Petiscaria para os jogos do Brasil. Litrinhos trincando, espetinhos na brasa e a galera da Zona Sul unida.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   COPA 2026 · WF Petiscaria — Bar da Fatinha
+   Paleta "noite de bar + cerveja + Copa": escuro fechado, dourado
+   de caneca, verde seleção
+   ============================================================ */
+:root{
+  --noite:#0C0F0A;
+  --balcao:#141910;
+  --balcao-2:#1C2318;
+  --cerveja:#F5A623;
+  --cerveja-forte:#FFBC4A;
+  --espuma:#F2EDDE;
+  --espuma-suave:rgba(242,237,222,.62);
+  --verde:#2E8B57;
+  --verde-escuro:#1E5C3C;
+  --linha:rgba(242,237,222,.12);
+  --erro:#E07856;
+  --radius:14px;
+  --max:680px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--noite);
+  color:var(--espuma);
+  font-family:'DM Sans',system-ui,sans-serif;
+  font-size:16px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(ellipse 90% 50% at 50% -5%, rgba(245,166,35,.06), transparent 60%);
+}
+.grain{position:fixed;inset:0;pointer-events:none;opacity:.05;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");}
+main{position:relative;z-index:1;max-width:var(--max);margin:0 auto;padding:0 20px 140px}
+
+/* ---------- tipografia ---------- */
+h1,h2,.display{font-family:'Fraunces',serif;font-weight:600;line-height:1.12;letter-spacing:-.01em}
+.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--cerveja)}
+.muted{color:var(--espuma-suave)}
+
+/* ---------- hero ---------- */
+.hero{padding:52px 0 28px;text-align:left}
+.hero .eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--verde);box-shadow:0 0 0 3px rgba(46,139,87,.2)}
+.hero h1{font-size:clamp(2.3rem,8vw,3.3rem);margin-bottom:6px}
+.hero h1 .fino{font-weight:400;font-style:italic;color:var(--cerveja)}
+.hero .sub{font-size:1.05rem;color:var(--espuma-suave);max-width:46ch;margin-top:10px}
+
+/* ---------- placar de reservas ---------- */
+.placar{margin:30px 0 8px;border:1px solid var(--linha);border-radius:var(--radius);
+  background:linear-gradient(180deg,var(--balcao-2),var(--balcao));overflow:hidden}
+.placar .topo{display:flex;justify-content:space-between;align-items:center;gap:8px;
+  padding:12px 18px;border-bottom:1px solid var(--linha)}
+.placar .jogo{font-family:'Fraunces',serif;font-weight:700;font-size:1.15rem;letter-spacing:.04em}
+.placar .jogo .x{color:var(--cerveja);font-style:italic;font-weight:400;padding:0 6px}
+.placar .quando{font-size:.8rem;color:var(--espuma-suave);text-align:right}
+.placar .corpo{padding:16px 18px 18px;border-top:3px solid var(--verde-escuro)}
+.placar .rotulo{font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--espuma-suave);margin-bottom:8px}
+.contagem{display:flex;gap:14px;font-variant-numeric:tabular-nums}
+.contagem .seg{text-align:center;min-width:54px}
+.contagem .num{font-size:1.9rem;font-weight:700;color:var(--cerveja-forte);font-family:'DM Sans',sans-serif;letter-spacing:.02em;line-height:1}
+.contagem .uni{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--espuma-suave);margin-top:5px}
+.placar .aviso{margin-top:12px;font-size:.85rem;color:var(--espuma-suave)}
+.placar .aviso strong{color:var(--espuma)}
+.placar.encerrado .corpo{border-top-color:var(--erro)}
+
+/* ---------- divisor ---------- */
+.corte{display:flex;justify-content:center;gap:10px;padding:34px 0 26px;opacity:.45}
+.corte span{display:block;width:26px;height:2px;background:var(--cerveja);transform:rotate(-24deg);border-radius:2px}
+
+/* ---------- como funciona ---------- */
+.passos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.passo{border:1px solid var(--linha);border-radius:12px;padding:14px 12px;background:rgba(255,255,255,.02)}
+.passo .ico{font-size:1.25rem;margin-bottom:6px;display:block}
+.passo p{font-size:.82rem;color:var(--espuma-suave);line-height:1.4}
+.passo p strong{display:block;color:var(--espuma);font-size:.88rem;margin-bottom:2px}
+
+/* ---------- seções ---------- */
+section h2{font-size:1.7rem;margin-bottom:4px}
+section .desc-sec{font-size:.95rem;color:var(--espuma-suave);margin-bottom:20px}
+
+/* ---------- agenda dos jogos ---------- */
+.agenda{display:flex;flex-direction:column;gap:10px;margin-bottom:8px}
+.partida{display:flex;align-items:center;gap:14px;border:1px solid var(--linha);border-radius:12px;padding:13px 16px;background:rgba(255,255,255,.02)}
+.partida .data{font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;min-width:64px;color:var(--cerveja)}
+.partida .info{flex:1}
+.partida .info .times{font-weight:700;font-size:.95rem}
+.partida .info .ret{font-size:.8rem;color:var(--espuma-suave)}
+.partida .tag{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:999px;border:1px solid var(--verde);color:#7FD6A4;white-space:nowrap}
+.partida.fechada{opacity:.45}
+.partida.fechada .tag{border-color:var(--erro);color:var(--erro)}
+
+/* ---------- combos ---------- */
+.kits{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:720px){.kits{grid-template-columns:1fr 1fr}}
+.kit{border:1px solid var(--linha);border-radius:var(--radius);background:var(--balcao);padding:20px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s}
+.kit:hover{border-color:rgba(245,166,35,.4)}
+.kit .cab{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.kit h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.25rem}
+.kit .preco{font-weight:700;color:var(--cerveja-forte);font-size:1.1rem;white-space:nowrap;font-variant-numeric:tabular-nums}
+.kit .serve{align-self:flex-start;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#7FD6A4;border:1px solid var(--verde);border-radius:999px;padding:4px 10px}
+.kit .desc{font-size:.9rem;color:var(--espuma-suave);flex:1}
+.stepper{display:flex;align-items:center;gap:0;margin-top:4px;border:1px solid var(--linha);border-radius:10px;overflow:hidden;align-self:flex-start}
+.stepper button{width:44px;height:44px;background:var(--balcao-2);border:none;color:var(--espuma);font-size:1.3rem;cursor:pointer;transition:background .15s}
+.stepper button:hover{background:#283421}
+.stepper button:disabled{opacity:.3;cursor:default}
+.stepper .qtd{min-width:52px;text-align:center;font-weight:700;font-size:1.05rem;font-variant-numeric:tabular-nums}
+.kit.no-carrinho{border-color:var(--cerveja)}
+
+/* ---------- barra fixa de reserva ---------- */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:50;transform:translateY(110%);transition:transform .25s ease;padding:12px 16px calc(12px + env(safe-area-inset-bottom))}
+.barra.ativa{transform:translateY(0)}
+.barra .inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;gap:14px;background:var(--balcao-2);border:1px solid rgba(245,166,35,.35);border-radius:16px;padding:12px 14px 12px 18px;box-shadow:0 -8px 30px rgba(0,0,0,.5)}
+.barra .resumo{flex:1;line-height:1.3}
+.barra .resumo .itens{font-size:.78rem;color:var(--espuma-suave)}
+.barra .resumo .total{font-weight:700;font-size:1rem;color:var(--cerveja-forte)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--cerveja);color:#1A0F00;font-weight:700;font-size:.95rem;border:none;border-radius:12px;padding:14px 22px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .15s,transform .1s}
+.btn:hover{background:var(--cerveja-forte)}
+.btn:active{transform:scale(.98)}
+.btn-zap{background:#25D366;color:#06281A;width:100%}
+.btn-zap:hover{background:#3BE07C}
+
+/* ---------- dialog de reserva ---------- */
+dialog{border:none;border-radius:18px 18px 0 0;background:var(--balcao-2);color:var(--espuma);width:100%;max-width:560px;padding:0;margin:auto auto 0;max-height:88dvh}
+@media(min-width:600px){dialog{border-radius:18px;margin:auto}}
+dialog::backdrop{background:rgba(5,8,4,.75);backdrop-filter:blur(3px)}
+.dlg-inner{padding:24px 22px calc(24px + env(safe-area-inset-bottom));overflow-y:auto;max-height:88dvh}
+.dlg-cab{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.dlg-cab h3{font-family:'Fraunces',serif;font-size:1.4rem}
+.fechar-x{background:none;border:1px solid var(--linha);color:var(--espuma-suave);width:36px;height:36px;border-radius:50%;font-size:1rem;cursor:pointer}
+.resumo-pedido{border:1px solid var(--linha);border-radius:12px;padding:14px 16px;margin-bottom:18px;background:rgba(0,0,0,.18)}
+.resumo-pedido .ln{display:flex;justify-content:space-between;gap:12px;font-size:.9rem;padding:3px 0}
+.resumo-pedido .ln .v{font-variant-numeric:tabular-nums;white-space:nowrap}
+.resumo-pedido .tot{border-top:1px solid var(--linha);margin-top:8px;padding-top:10px;font-weight:700;font-size:1rem}
+.resumo-pedido .nota-est{font-size:.75rem;color:var(--espuma-suave);margin-top:6px}
+.campo{margin-bottom:14px}
+.campo label{display:block;font-size:.8rem;font-weight:700;letter-spacing:.04em;margin-bottom:6px;color:var(--espuma-suave)}
+.campo input,.campo select,.campo textarea{width:100%;background:var(--noite);border:1px solid var(--linha);border-radius:10px;color:var(--espuma);padding:13px 14px;font-size:1rem;font-family:'DM Sans',sans-serif}
+.campo textarea{resize:vertical;min-height:64px}
+.campo input:focus,.campo select:focus,.campo textarea:focus{outline:2px solid var(--cerveja);outline-offset:1px;border-color:transparent}
+.nota-dlg{font-size:.78rem;color:var(--espuma-suave);text-align:center;margin-top:10px}
+
+/* ---------- confirmação ---------- */
+.confirma{text-align:center;padding:8px 0}
+.confirma .check{width:54px;height:54px;border-radius:50%;background:rgba(46,139,87,.18);border:1px solid var(--verde);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 14px}
+.confirma h3{font-family:'Fraunces',serif;font-size:1.35rem;margin-bottom:8px}
+.confirma p{font-size:.92rem;color:var(--espuma-suave);max-width:38ch;margin:0 auto 6px}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--linha);margin-top:54px;padding:26px 0 10px;text-align:center}
+footer .marca{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem}
+footer p{font-size:.82rem;color:var(--espuma-suave);margin-top:4px}
+footer .credito{margin-top:18px;font-size:.74rem;letter-spacing:.04em}
+footer .credito a{color:var(--cerveja);text-decoration:none;font-weight:700}
+
+/* ---------- animações ---------- */
+@media(prefers-reduced-motion:no-preference){
+  .hero>*,.placar{animation:sobe .6s ease both}
+  .hero>*:nth-child(2){animation-delay:.08s}
+  .hero>*:nth-child(3){animation-delay:.16s}
+  .placar{animation-delay:.24s}
+  @keyframes sobe{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+}
+:focus-visible{outline:2px solid var(--cerveja);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<main>
+
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Copa 2026 · Zona Sul de Londrina</p>
+    <h1 id="h-marca">WF Petiscaria</h1>
+    <h1 style="font-size:clamp(1.5rem,5.5vw,2.1rem)"><span class="fino">Bar da Fatinha — Reserve sua mesa</span></h1>
+    <p class="sub" id="h-tagline">Litrinho trincando, espetinho na brasa e o Brasil na tela. Garanta seu lugar na Fatinha e torça junto com a galera da Zona Sul.</p>
+
+    <!-- placar de reservas -->
+    <div class="placar" id="placar">
+      <div class="topo">
+        <div class="jogo" id="placar-jogo">BRA <span class="x">×</span> —</div>
+        <div class="quando" id="placar-quando">—</div>
+      </div>
+      <div class="corpo">
+        <div class="rotulo" id="placar-rotulo">Reservas abertas até</div>
+        <div class="contagem" id="contagem" role="timer" aria-live="off">
+          <div class="seg"><div class="num" id="c-d">0</div><div class="uni">dias</div></div>
+          <div class="seg"><div class="num" id="c-h">00</div><div class="uni">horas</div></div>
+          <div class="seg"><div class="num" id="c-m">00</div><div class="uni">min</div></div>
+          <div class="seg"><div class="num" id="c-s">00</div><div class="uni">seg</div></div>
+        </div>
+        <p class="aviso" id="placar-aviso">—</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= COMO FUNCIONA ================= -->
+  <div class="passos" aria-label="Como funciona">
+    <div class="passo"><span class="ico" aria-hidden="true">🍺</span><p><strong>Escolha o combo</strong>Litrinhos, espetinhos e petiscos da casa.</p></div>
+    <div class="passo"><span class="ico" aria-hidden="true">💬</span><p><strong>Reserve no WhatsApp</strong>A Fatinha confirma sua mesa.</p></div>
+    <div class="passo"><span class="ico" aria-hidden="true">⚽</span><p><strong>Chega e curte</strong>Gelada na mão, Brasil na tela e bingo rolando.</p></div>
+  </div>
+
+  <div class="corte" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <!-- ================= AGENDA ================= -->
+  <section aria-labelledby="t-agenda">
+    <h2 id="t-agenda">Jogos do Brasil</h2>
+    <p class="desc-sec">A Fatinha vai estar aberta em todos os jogos. Reserve sua mesa com antecedência — a casa enche rápido.</p>
+    <div class="agenda" id="agenda"></div>
+  </section>
+
+  <div class="corte" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <!-- ================= COMBOS ================= -->
+  <section aria-labelledby="t-kits">
+    <h2 id="t-kits">Combos da Copa</h2>
+    <p class="desc-sec">Monte seu pedido antecipado. Os valores são estimativas — o acerto é na hora com a Fatinha.</p>
+    <div class="kits" id="kits"></div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <p class="marca" id="f-marca">WF Petiscaria</p>
+    <p id="f-apelido">Bar da Fatinha · Zona Sul · Londrina</p>
+    <p id="f-horario">Qua a Dom · 09h às 23h</p>
+    <p class="credito">Página criada por <a id="f-credito" href="#" target="_blank" rel="noopener">Walter Miranda · Com Propósito</a></p>
+  </footer>
+</main>
+
+<!-- ================= BARRA DE RESERVA ================= -->
+<div class="barra" id="barra">
+  <div class="inner">
+    <div class="resumo">
+      <div class="itens" id="barra-itens">0 combos</div>
+      <div class="total" id="barra-total">Confirmar no WhatsApp</div>
+    </div>
+    <button class="btn" id="abrir-pedido">Reservar mesa</button>
+  </div>
+</div>
+
+<!-- ================= DIALOG ================= -->
+<dialog id="dlg">
+  <div class="dlg-inner" id="dlg-conteudo"></div>
+</dialog>
+
+<script>
+/* ============================================================
+   CONFIG — tudo que muda de cliente pra cliente está aqui.
+   Clonar = editar este bloco. Nada abaixo precisa ser tocado.
+   ⚠️ PREENCHER ANTES DE PUBLICAR: whatsapp, preços reais.
+   ============================================================ */
+const CONFIG = {
+  marca: {
+    nome: "WF Petiscaria",
+    apelido: "Bar da Fatinha",
+    cidade: "Zona Sul · Londrina · PR",
+    horario: "Qua a Dom, das 09h às 23h",
+  },
+  // WhatsApp da Fatinha — 55 + DDD + número, só dígitos
+  whatsapp: "5543984366762",
+  credito: {
+    nome: "Walter Miranda · Com Propósito",
+    url: "https://wa.me/5543984366762", // ⚠️ AJUSTAR: WhatsApp do desenvolvedor
+  },
+  // Jogos do Brasil na fase de grupos — Copa 2026 (horário de Brasília)
+  // limite = até quando aceitar reserva (antes do bar abrir pra aquele jogo)
+  jogos: [
+    {
+      id: "j1", adversario: "Marrocos", sigla: "MAR",
+      rotulo: "Sáb · 13/06 · 19h",
+      data: "2026-06-13T19:00:00-03:00",
+      abertura: "Sábado 13/06 a partir das 16h",
+      limite: "2026-06-13T15:00:00-03:00",
+      limiteRotulo: "sábado (13/06) às 15h",
+    },
+    {
+      id: "j2", adversario: "Haiti", sigla: "HAI",
+      rotulo: "Sex · 19/06 · 21h30",
+      data: "2026-06-19T21:30:00-03:00",
+      abertura: "Sexta 19/06 a partir das 18h",
+      limite: "2026-06-19T17:00:00-03:00",
+      limiteRotulo: "sexta (19/06) às 17h",
+    },
+    {
+      id: "j3", adversario: "Escócia", sigla: "ESC",
+      rotulo: "Qua · 24/06 · 19h",
+      data: "2026-06-24T19:00:00-03:00",
+      abertura: "Quarta 24/06 a partir das 16h",
+      limite: "2026-06-24T15:00:00-03:00",
+      limiteRotulo: "quarta (24/06) às 15h",
+    },
+  ],
+  // ⚠️ AJUSTAR preços com a Fatinha antes de publicar
+  kits: [
+    {
+      id: "k1", nome: "Balde da Fatinha", preco: 39.90, serve: "2–3 pessoas",
+      desc: "6 litrinhos 300ml trincando — Skol, Brahma Chopp ou Antarctica Original. O carro-chefe que nunca falha.",
+    },
+    {
+      id: "k2", nome: "Combo Espetinho + Gelada", preco: 44.90, serve: "2 pessoas",
+      desc: "4 espetinhos na brasa mais 4 litrinhos gelados. A dupla certa do primeiro ao segundo tempo.",
+    },
+    {
+      id: "k3", nome: "Mesa da Galera", preco: 74.90, serve: "4–6 pessoas",
+      desc: "Balde com 10 litrinhos mais porção de batata frita. Pra galera grande entrar no ritmo.",
+    },
+    {
+      id: "k4", nome: "Feijoada ou Mocotó", preco: 34.90, serve: "Sex e Sáb",
+      desc: "Prato completo sob encomenda. Disponível somente sextas e sábados — reserve com antecedência.",
+    },
+  ],
+};
+
+/* ============================================================
+   LÓGICA — não precisa editar daqui pra baixo
+   ============================================================ */
+const $ = (s) => document.querySelector(s);
+const carrinho = {};
+const brl = (v) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+const agora = () => new Date();
+const jogosAtivos = () => CONFIG.jogos.filter((j) => new Date(j.limite) > agora());
+const proximoJogo = () => jogosAtivos()[0] || null;
+
+/* ---------- render: identidade ---------- */
+document.title = `Copa 2026 na Fatinha · ${CONFIG.marca.nome} — Reserve sua mesa`;
+$("#h-marca").textContent = CONFIG.marca.nome;
+$("#f-marca").textContent = CONFIG.marca.nome;
+$("#f-apelido").textContent = `${CONFIG.marca.apelido} · ${CONFIG.marca.cidade}`;
+$("#f-horario").textContent = CONFIG.marca.horario;
+$("#f-credito").textContent = CONFIG.credito.nome;
+$("#f-credito").href = CONFIG.credito.url;
+
+/* ---------- render: agenda ---------- */
+function renderAgenda() {
+  $("#agenda").innerHTML = CONFIG.jogos.map((j) => {
+    const aberto = new Date(j.limite) > agora();
+    return `
+    <div class="partida ${aberto ? "" : "fechada"}">
+      <div class="data">${j.rotulo.split("·")[1].trim()}</div>
+      <div class="info">
+        <div class="times">Brasil × ${j.adversario} — ${j.rotulo.split("·")[2].trim()}</div>
+        <div class="ret">Bar abre: ${j.abertura}</div>
+      </div>
+      <div class="tag">${aberto ? "Reservas abertas" : "Encerrado"}</div>
+    </div>`;
+  }).join("");
+}
+
+/* ---------- render: combos ---------- */
+function renderKits() {
+  $("#kits").innerHTML = CONFIG.kits.map((k) => `
+    <article class="kit" id="kit-${k.id}">
+      <div class="cab"><h3>${k.nome}</h3><div class="preco">${brl(k.preco)}</div></div>
+      <span class="serve">${k.serve}</span>
+      <p class="desc">${k.desc}</p>
+      <div class="stepper" aria-label="Quantidade de ${k.nome}">
+        <button type="button" data-menos="${k.id}" aria-label="Diminuir ${k.nome}" disabled>−</button>
+        <span class="qtd" id="qtd-${k.id}">0</span>
+        <button type="button" data-mais="${k.id}" aria-label="Aumentar ${k.nome}">+</button>
+      </div>
+    </article>`).join("");
+}
+
+/* ---------- carrinho ---------- */
+function alterar(id, delta) {
+  carrinho[id] = Math.max(0, (carrinho[id] || 0) + delta);
+  if (carrinho[id] === 0) delete carrinho[id];
+  atualizarUI();
+}
+function totais() {
+  let qtd = 0, total = 0;
+  for (const [id, q] of Object.entries(carrinho)) {
+    const k = CONFIG.kits.find((x) => x.id === id);
+    qtd += q; total += q * k.preco;
+  }
+  return { qtd, total };
+}
+function atualizarUI() {
+  CONFIG.kits.forEach((k) => {
+    const q = carrinho[k.id] || 0;
+    $(`#qtd-${k.id}`).textContent = q;
+    document.querySelector(`[data-menos="${k.id}"]`).disabled = q === 0;
+    $(`#kit-${k.id}`).classList.toggle("no-carrinho", q > 0);
+  });
+  const { qtd } = totais();
+  $("#barra-itens").textContent = qtd === 1 ? "1 combo selecionado" : `${qtd} combos selecionados`;
+  $("#barra").classList.toggle("ativa", qtd > 0);
+}
+document.addEventListener("click", (e) => {
+  const mais = e.target.closest("[data-mais]");
+  const menos = e.target.closest("[data-menos]");
+  if (mais) alterar(mais.dataset.mais, 1);
+  if (menos) alterar(menos.dataset.menos, -1);
+});
+
+/* ---------- placar / contagem ---------- */
+let jogoContagem = null;
+function renderPlacar() {
+  const j = proximoJogo();
+  const placar = $("#placar");
+  if (!j) {
+    placar.classList.add("encerrado");
+    $("#placar-jogo").innerHTML = `BRA <span class="x">×</span> ?`;
+    $("#placar-quando").textContent = "Mata-mata";
+    $("#placar-rotulo").textContent = "Fase de grupos encerrada";
+    $("#contagem").style.display = "none";
+    $("#placar-aviso").innerHTML = "<strong>Novas datas em breve.</strong> Assim que o Brasil avançar, abrimos as reservas do mata-mata aqui.";
+    jogoContagem = null;
+    return;
+  }
+  jogoContagem = j;
+  $("#placar-jogo").innerHTML = `BRA <span class="x">×</span> ${j.sigla}`;
+  $("#placar-quando").textContent = j.rotulo;
+  $("#placar-rotulo").textContent = "Reservas pra esse jogo fecham em";
+  $("#placar-aviso").innerHTML = `Reserve até <strong>${j.limiteRotulo}</strong> · Bar abre: <strong>${j.abertura}</strong>`;
+}
+function tick() {
+  if (!jogoContagem) return;
+  const diff = new Date(jogoContagem.limite) - agora();
+  if (diff <= 0) { renderPlacar(); renderAgenda(); return; }
+  const d = Math.floor(diff / 864e5);
+  const h = Math.floor((diff % 864e5) / 36e5);
+  const m = Math.floor((diff % 36e5) / 6e4);
+  const s = Math.floor((diff % 6e4) / 1e3);
+  $("#c-d").textContent = d;
+  $("#c-h").textContent = String(h).padStart(2, "0");
+  $("#c-m").textContent = String(m).padStart(2, "0");
+  $("#c-s").textContent = String(s).padStart(2, "0");
+}
+setInterval(tick, 1000);
+
+/* ---------- dialog de reserva ---------- */
+const dlg = $("#dlg");
+$("#abrir-pedido").addEventListener("click", abrirReserva);
+
+function abrirReserva() {
+  const ativos = jogosAtivos();
+  const { total } = totais();
+  const linhas = Object.entries(carrinho).map(([id, q]) => {
+    const k = CONFIG.kits.find((x) => x.id === id);
+    return `<div class="ln"><span>${q}× ${k.nome}</span><span class="v">${brl(q * k.preco)}</span></div>`;
+  }).join("");
+
+  if (ativos.length === 0) {
+    $("#dlg-conteudo").innerHTML = `
+      <div class="dlg-cab"><h3>Reservas encerradas</h3>
+        <button class="fechar-x" data-fechar aria-label="Fechar">✕</button></div>
+      <p class="muted">As reservas da fase de grupos fecharam. Volte aqui quando o Brasil avançar — abrimos as reservas do mata-mata em breve.</p>`;
+    dlg.showModal();
+    return;
+  }
+
+  $("#dlg-conteudo").innerHTML = `
+    <div class="dlg-cab"><h3>Reservar mesa</h3>
+      <button class="fechar-x" data-fechar aria-label="Fechar">✕</button></div>
+    <div class="resumo-pedido">
+      ${linhas}
+      <div class="ln tot"><span>Estimativa de consumo</span><span class="v">${brl(total)}</span></div>
+      <p class="nota-est">Valores aproximados — o acerto é na hora com a Fatinha. Sem pagamento adiantado.</p>
+    </div>
+    <div class="campo">
+      <label for="f-nome">Seu nome</label>
+      <input id="f-nome" type="text" autocomplete="name" placeholder="Como podemos te chamar?" required>
+    </div>
+    <div class="campo">
+      <label for="f-pessoas">Quantas pessoas na mesa?</label>
+      <select id="f-pessoas">
+        <option value="1 pessoa">1 pessoa</option>
+        <option value="2 pessoas">2 pessoas</option>
+        <option value="3 pessoas">3 pessoas</option>
+        <option value="4 pessoas">4 pessoas</option>
+        <option value="5 ou mais pessoas" selected>5 ou mais pessoas</option>
+      </select>
+    </div>
+    <div class="campo">
+      <label for="f-jogo">Para qual jogo?</label>
+      <select id="f-jogo">
+        ${ativos.map((j) => `<option value="${j.id}">Brasil × ${j.adversario} — ${j.rotulo}</option>`).join("")}
+      </select>
+    </div>
+    <div class="campo">
+      <label for="f-obs">Alguma observação? (opcional)</label>
+      <textarea id="f-obs" placeholder="Ex.: prefiro mesa coberta, tem criança na mesa, quero Feijoada…"></textarea>
+    </div>
+    <button class="btn btn-zap" id="enviar-zap">Reservar mesa no WhatsApp</button>
+    <p class="nota-dlg">Sua reserva vai direto pro WhatsApp da ${CONFIG.marca.apelido}. Sem pagamento aqui na página.</p>`;
+  dlg.showModal();
+  $("#enviar-zap").addEventListener("click", enviarReserva);
+}
+
+function enviarReserva() {
+  const nome = $("#f-nome").value.trim();
+  if (!nome) { $("#f-nome").focus(); $("#f-nome").style.borderColor = "var(--erro)"; return; }
+  const jogo = CONFIG.jogos.find((j) => j.id === $("#f-jogo").value);
+  const pessoas = $("#f-pessoas").value;
+  const obs = $("#f-obs").value.trim();
+  const { total } = totais();
+
+  const itens = Object.entries(carrinho).map(([id, q]) => {
+    const k = CONFIG.kits.find((x) => x.id === id);
+    return `• ${q}x ${k.nome}`;
+  }).join("\n");
+
+  const msg =
+`*RESERVA DE MESA · COPA 2026* ⚽🇧🇷
+*${CONFIG.marca.nome} — ${CONFIG.marca.apelido}*
+
+*Nome:* ${nome}
+*Pessoas na mesa:* ${pessoas}
+*Jogo:* Brasil × ${jogo.adversario} (${jogo.rotulo})
+*Bar abre:* ${jogo.abertura}
+
+*Combos de interesse:*
+${itens}
+(estimativa: ${brl(total)})
+${obs ? `\n*Obs:* ${obs}` : ""}
+
+_Reserva feita pela página da Copa 2026_`;
+
+  window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`, "_blank");
+  mostrarConfirmacao();
+}
+
+function mostrarConfirmacao() {
+  $("#dlg-conteudo").innerHTML = `
+    <div class="dlg-cab"><h3></h3>
+      <button class="fechar-x" data-fechar aria-label="Fechar">✕</button></div>
+    <div class="confirma">
+      <div class="check" aria-hidden="true">✓</div>
+      <h3>Te esperamos lá!</h3>
+      <p>Sua reserva abriu no WhatsApp — é só apertar <strong>enviar</strong> por lá.</p>
+      <p>A Fatinha vai confirmar sua mesa. Chega no horário, litrinho tá te esperando trincando. Vai Brasil!</p>
+    </div>`;
+}
+
+dlg.addEventListener("click", (e) => {
+  if (e.target.closest("[data-fechar]") || e.target === dlg) dlg.close();
+});
+
+/* ---------- init ---------- */
+renderAgenda();
+renderKits();
+renderPlacar();
+tick();
+atualizarUI();
+</script>
+</body>
+</html>
