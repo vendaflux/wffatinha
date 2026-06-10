@@ -2,16 +2,16 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'unsafe-inline'; img-src data:;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; style-src-elem 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'unsafe-inline'; img-src data:; connect-src https://fonts.googleapis.com https://fonts.gstatic.com;">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Copa 2026 na Fatinha · WF Petiscaria — Reserve sua mesa</title>
-<meta name="description" content="Reserve sua mesa na WF Petiscaria para os jogos do Brasil. Litrinhos trincando, espetinhos na brasa e a galera da Zona Sul unida.">
+<title>Copa 2026 na Fatinha · WF Fatinha Conveniência — Reserve sua mesa</title>
+<meta name="description" content="Reserve sua mesa na WF Fatinha Conveniência para os jogos do Brasil. Litrinhos trincando, espetinhos na brasa e a galera da Zona Sul unida.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   COPA 2026 · WF Petiscaria — Bar da Fatinha
+   COPA 2026 · WF Fatinha Conveniência — Bar da Fatinha
    Paleta "noite de bar + cerveja + Copa": escuro fechado, dourado
    de caneca, verde seleção
    ============================================================ */
@@ -182,7 +182,7 @@ footer .credito a{color:var(--cerveja);text-decoration:none;font-weight:700}
   <!-- ================= HERO ================= -->
   <header class="hero">
     <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Copa 2026 · Zona Sul de Londrina</p>
-    <h1 id="h-marca">WF Petiscaria</h1>
+    <h1 id="h-marca">WF Fatinha Conveniência</h1>
     <h1 style="font-size:clamp(1.5rem,5.5vw,2.1rem)"><span class="fino">Bar da Fatinha — Reserve sua mesa</span></h1>
     <p class="sub" id="h-tagline">Litrinho trincando, espetinho na brasa e o Brasil na tela. Garanta seu lugar na Fatinha e torça junto com a galera da Zona Sul.</p>
 
@@ -232,7 +232,7 @@ footer .credito a{color:var(--cerveja);text-decoration:none;font-weight:700}
 
   <!-- ================= FOOTER ================= -->
   <footer>
-    <p class="marca" id="f-marca">WF Petiscaria</p>
+    <p class="marca" id="f-marca">WF Fatinha Conveniência</p>
     <p id="f-apelido">Bar da Fatinha · Zona Sul · Londrina</p>
     <p id="f-horario">Qua a Dom · 09h às 23h</p>
     <p class="credito">Página criada por <a id="f-credito" href="#" target="_blank" rel="noopener">Walter Miranda · Com Propósito</a></p>
@@ -263,16 +263,16 @@ footer .credito a{color:var(--cerveja);text-decoration:none;font-weight:700}
    ============================================================ */
 const CONFIG = {
   marca: {
-    nome: "WF Petiscaria",
+    nome: "WF Fatinha Conveniência",
     apelido: "Bar da Fatinha",
     cidade: "Zona Sul · Londrina · PR",
-    horario: "Qua a Dom, das 09h às 23h",
+    horario: "Seg a Dom, das 09h às 00h",
   },
   // WhatsApp da Fatinha — 55 + DDD + número, só dígitos
   whatsapp: "5543984366762",
   credito: {
     nome: "Walter Miranda · Com Propósito",
-    url: "https://wa.me/5543984366762", // ⚠️ AJUSTAR: WhatsApp do desenvolvedor
+    url: "https://wa.me/5543988616329", // ⚠️ AJUSTAR: WhatsApp do desenvolvedor
   },
   // Jogos do Brasil na fase de grupos — Copa 2026 (horário de Brasília)
   // limite = até quando aceitar reserva (antes do bar abrir pra aquele jogo)
